@@ -1,12 +1,15 @@
-const { nextui } = require("@nextui-org/react");
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from "tailwindcss"
+
+const config = {
+  darkMode: ["class"],
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./lib/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
-  ],
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+	],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -50,12 +53,6 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // background: "hsl(var(--background))",
-        // foreground: "hsl(var(--foreground))",
-        // btn: {
-        //   background: "hsl(var(--btn-background))",
-        //   "background-hover": "hsl(var(--btn-background-hover))",
-        // },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -78,5 +75,7 @@ module.exports = {
       },
     },
   },
-  plugins: [nextui()],
-};
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
+
+export default config

@@ -3,6 +3,8 @@ import { headers, cookies } from "next/headers";
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 
+const redirectPath = "/dashboard";
+
 export default function Login({
   searchParams,
 }: {
@@ -25,7 +27,7 @@ export default function Login({
       return redirect("/login?message=Could not authenticate user");
     }
 
-    return redirect("/");
+    return redirect(redirectPath);
   };
 
   const signUp = async (formData: FormData) => {
